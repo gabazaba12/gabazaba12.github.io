@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriela Kalisz</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Kółko i krzyżyk</title>
 </head>
+
 <body>
-    <header>
-        <h1>Moja Strona</h1>
-    </header>
+    <div class="game-container">
+        <h1>Kółko i krzyżyk</h1>
+        <div id="game-board" class="board">
+            <!-- Game board cells will be dynamically added here -->
+        </div>
+        <div id="result" class="result"></div>
+        <button onclick="resetGame()">Reset</button>
+    </div>
 
-    <nav>
-        <a href="#">Strona główna</a>
-        <a href="#">O mnie</a>
-        <a href="#">Kontakt</a>
-    </nav>
-
-    <section>
-        <h2>Witaj na mojej stronie!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <img src="kotek.jpg" alt="Kotek">
-    </section>
-
+    <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,35 +1,58 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
     text-align: center;
 }
 
-header, footer {
-    background-color: #333;
-    color: white;
-    padding: 1em;
+.game-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-nav {
-    background-color: #444;
-    color: white;
-    padding: 0.5em;
+h1 {
+    color: #333;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 1em;
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
 }
 
-section {
-    padding: 2em;
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    margin: 1em 0;
+.result {
+    color: #333;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
 }

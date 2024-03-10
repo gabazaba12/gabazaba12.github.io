@@ -1,83 +1,111 @@
-const board = document.getElementById('game-board');
-const resultElement = document.getElementById('result');
-let currentPlayer = 'X';
-let gameBoard = ['', '', '', '', '', '', '', '', ''];
-let gameActive = true;
-let difficulty = 'medium'; // Default difficulty
+document.addEventListener('DOMContentLoaded', function () {
+    const board = document.getElementById('board');
+    const cells = document.querySelectorAll('.cell');
+    const result = document.getElementById('result');
+    let currentPlayer = 'X';
+    let gameBoard = ['', '', '', '', '', '', '', '', ''];
+    let gameActive = true;
+    let difficultyLevel;
 
-function handleCellClick(index) {
-    if (gameBoard[index] === '' && gameActive) {
-        gameBoard[index] = currentPlayer;
-        renderBoard();
-        checkWinner();
-        switchPlayer();
-        if (currentPlayer === 'O' && gameActive) {
-            setTimeout(() => computerMove(), 500); // Delay computer move for better user experience
+    cells.forEach(cell => {
+        cell.addEventListener('click', handleCellClick);
+    });
+
+    function handleCellClick(e) {
+        const index = e.target.dataset.index;
+
+        if (gameBoard[index] === '' && gameActive) {
+            gameBoard[index] = currentPlayer;
+            e.target.textContent = currentPlayer;
+            checkWinner();
+            if (gameActive) {
+                togglePlayer();
+                if (currentPlayer === 'O') {
+                    setTimeout(makeComputerMove, 500);
+                }
+            }
         }
     }
-}
 
-function computerMove() {
-    let index;
-    switch (difficulty) {
-        case 'easy':
-            index = getRandomEmptyCell();
-            break;
-        case 'medium':
-            index = getMediumDifficultyMove();
-            break;
-        case 'hard':
-            index = getHardDifficultyMove();
-            break;
+    function togglePlayer() {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     }
 
-    gameBoard[index] = currentPlayer;
-    renderBoard();
-    checkWinner();
-    switchPlayer();
-}
+    function checkWinner() {
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
 
-function getRandomEmptyCell() {
-    const emptyCells = gameBoard.reduce((acc, cell, index) => {
-        if (cell === '') acc.push(index);
-        return acc;
-    }, []);
+        for (let pattern of winPatterns) {
+            const [a, b, c] = pattern;
+            if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
+                result.textContent = `${currentPlayer} wins!`;
+                gameActive = false;
+                highlightWinner(pattern);
+                break;
+            }
+        }
 
-    const randomIndex = Math.floor(Math.random() * emptyCells.length);
-    return emptyCells[randomIndex];
-}
+        if (!gameBoard.includes('') && gameActive) {
+            result.textContent = 'It\'s a tie!';
+            gameActive = false;
+        }
+    }
 
-function getMediumDifficultyMove() {
-    return getRandomEmptyCell();
-}
+    function highlightWinner(pattern) {
+        for (let index of pattern) {
+            cells[index].style.backgroundColor = '#aaffaa';
+        }
+    }
 
-function getHardDifficultyMove() {
-    // Implement your own logic for hard difficulty here
-    // For simplicity, using medium difficulty logic in this example
-    return getMediumDifficultyMove();
-}
+    function makeComputerMove() {
+        switch (difficultyLevel) {
+            case 'easy':
+                makeRandomMove();
+                break;
+            case 'medium':
+                makeSmartMove();
+                break;
+            case 'hard':
+                makeBestMove();
+                break;
+        }
 
-function switchPlayer() {
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-}
+        checkWinner();
+        togglePlayer();
+    }
 
-function checkWinner() {
-    // ... (unchanged)
-}
+    function makeRandomMove() {
+        const emptyCells = gameBoard.reduce((acc, value, index) => {
+            if (value === '') {
+                acc.push(index);
+            }
+            return acc;
+        }, []);
 
-function resetGame() {
-    gameBoard = ['', '', '', '', '', '', '', '', ''];
-    currentPlayer = 'X';
-    gameActive = true;
-    resultElement.textContent = '';
-    renderBoard();
-}
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        const move = emptyCells[randomIndex];
 
-// Set difficulty level
-function setDifficulty(level) {
-    difficulty = level;
-    resetGame();
-}
+        gameBoard[move] = currentPlayer;
+        cells[move].textContent = currentPlayer;
+    }
 
-// Initial render
-renderBoard();
+    function makeSmartMove() {
+        // Add logic for medium difficulty (if desired)
+        makeRandomMove();
+    }
+
+    function makeBestMove() {
+        // Add logic for hard difficulty (if desired)
+        makeRandomMove();
+    }
+
+    function setDifficulty(level) {
+        difficultyLevel = level;
+    }
+
+    // Example: Set difficulty level to 'easy'
+    setDifficulty('easy');
+});

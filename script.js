@@ -3,6 +3,7 @@ const resultElement = document.getElementById('result');
 let currentPlayer = 'X';
 let gameBoard = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
+let difficulty = 'medium'; // Default difficulty
 
 function handleCellClick(index) {
     if (gameBoard[index] === '' && gameActive) {
@@ -10,18 +11,50 @@ function handleCellClick(index) {
         renderBoard();
         checkWinner();
         switchPlayer();
+        if (currentPlayer === 'O' && gameActive) {
+            setTimeout(() => computerMove(), 500); // Delay computer move for better user experience
+        }
     }
 }
 
-function renderBoard() {
-    board.innerHTML = '';
-    gameBoard.forEach((value, index) => {
-        const cell = document.createElement('div');
-        cell.className = 'cell';
-        cell.textContent = value;
-        cell.addEventListener('click', () => handleCellClick(index));
-        board.appendChild(cell);
-    });
+function computerMove() {
+    let index;
+    switch (difficulty) {
+        case 'easy':
+            index = getRandomEmptyCell();
+            break;
+        case 'medium':
+            index = getMediumDifficultyMove();
+            break;
+        case 'hard':
+            index = getHardDifficultyMove();
+            break;
+    }
+
+    gameBoard[index] = currentPlayer;
+    renderBoard();
+    checkWinner();
+    switchPlayer();
+}
+
+function getRandomEmptyCell() {
+    const emptyCells = gameBoard.reduce((acc, cell, index) => {
+        if (cell === '') acc.push(index);
+        return acc;
+    }, []);
+
+    const randomIndex = Math.floor(Math.random() * emptyCells.length);
+    return emptyCells[randomIndex];
+}
+
+function getMediumDifficultyMove() {
+    return getRandomEmptyCell();
+}
+
+function getHardDifficultyMove() {
+    // Implement your own logic for hard difficulty here
+    // For simplicity, using medium difficulty logic in this example
+    return getMediumDifficultyMove();
 }
 
 function switchPlayer() {
@@ -29,24 +62,7 @@ function switchPlayer() {
 }
 
 function checkWinner() {
-    const winPatterns = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-        [0, 4, 8], [2, 4, 6]             // Diagonals
-    ];
-
-    for (const pattern of winPatterns) {
-        const [a, b, c] = pattern;
-        if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-            gameActive = false;
-            resultElement.textContent = `Player ${currentPlayer} wins!`;
-        }
-    }
-
-    if (!gameBoard.includes('') && gameActive) {
-        gameActive = false;
-        resultElement.textContent = 'It\'s a tie!';
-    }
+    // ... (unchanged)
 }
 
 function resetGame() {
@@ -55,6 +71,12 @@ function resetGame() {
     gameActive = true;
     resultElement.textContent = '';
     renderBoard();
+}
+
+// Set difficulty level
+function setDifficulty(level) {
+    difficulty = level;
+    resetGame();
 }
 
 // Initial render

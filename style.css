@@ -1,86 +1,199 @@
+/* Styl CSS */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
+    font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #444;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #666;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+form {
+    margin-top: 20px;
     background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
-h1 {
-    color: #333;
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-#modeSelection {
-    display: flex;
-    justify-content: center;
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #444;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 300px;
     margin-bottom: 20px;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4caf50;
+/* Dodajemy reguły dla kontenera, który będzie zawierał zdjęcie */
+.image-container {
+    text-align: center; /* Wysrodkowanie tekstu */
+}
+
+/* Dodajemy reguły dla samego zdjęcia */
+.image-container img {
+    display: block; /* Ustawienie na blok, aby móc używać margin: 0 auto */
+    margin: 0 auto; /* Automatyczne wycentrowanie zdjęcia */
+}
+/* style.css */
+
+
+/* style.css */
+
+/* style.css */
+
+/* style.css */
+
+/* style.css */
+
+#aboutPage {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Wyśrodkowanie w pionie */
+    margin-top: 20px;
+}
+
+.gallery-item {
+    margin: 10px;
+    position: relative;
+    overflow: hidden; /* Zapobiega wychodzeniu opisu poza obszar zdjęcia */
+    border-radius: 10px;
+    text-align: center; /* Wyśrodkowanie opisu w poziomie */
+}
+
+.gallery-item img {
+    max-width: 100%; /* Zapobiega przekraczaniu kontenera przez zdjęcie */
+    height: auto; /* Zapobiega zniekształceniu proporcji zdjęcia */
+    border-radius: 10px;
+}
+
+.gallery-caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+.navigation-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation-buttons button {
+    background-color: #333;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     margin: 0 10px;
 }
 
-button:hover {
-    background-color: #45a049;
-}
-
-#gameContainer {
-    display: none;
-}
-
-#board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    margin: 20px auto;
-}
-
-.cell {
-    width: 100%;
-    padding: 20px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.cell:hover {
-    background-color: #f0f0f0;
-}
-
-.result {
-    color: #333;
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-#resetBtn {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4caf50;
+#galleryPage {
+    position: relative;
     color: #fff;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
+    text-align: center;
+    padding: 100px 20px;
 }
 
-#resetBtn:hover {
-    background-color: #45a049;
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Wyśrodkowanie w pionie */
+    margin-top: 20px;
 }
+
+.gallery img {
+    max-width: 100%; /* Zdjęcie będzie zajmować maksymalnie dostępną szerokość */
+    max-height: 80vh; /* Ustawiamy maksymalną wysokość na 80% wysokości widoku */
+    border-radius: 10px;
+}
+
+.countdown {
+    font-size: 36px;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+

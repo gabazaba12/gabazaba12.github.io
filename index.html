@@ -1,27 +1,68 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-   <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriela Kalisz</title>
+    <title>Moja Strona</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Moja Strona</h1>
+        <h1>AVATAR</h1>
     </header>
-
     <nav>
-        <a href="#">Strona główna</a>
-        <a href="#">O mnie</a>
-        <a href="#">Kontakt</a>
+        <a href="#" onclick="showPage('home')">Aang</a>
+        <a href="#" onclick="showPage('about')">Kim byli?</a>
+        <a href="#" onclick="showPage('gallery')">Galeria</a>
     </nav>
-
-    <section>
-        <h2>Witaj na mojej stronie!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <img src="kotek.jpg" alt="Kotek">
-    </section>
-
+    <div class="container">
+        <div class="content" id="homePage">
+            <h2>Historia Aanga</h2>
+            <p>Opowiada o świecie podzielonym na cztery nacje: Królestwo Ziemi, Nomadowie Powietrza, Plemiona Wody i Naród Ognia.W każdej krainie żyją ludzie, zwani magami, mogący zapanować nad jednym żywiołem przypisanym swojemu ludowi. Ale raz na pokolenie, na przemian w każdym kraju, rodzi się Awatar, duch świata przybierający ludzką formę. Posiada on umiejętność nauki wszystkich czterech elementów, a jego zadaniem jest pilnowanie pokoju i równowagi na świecie. Gdy nagle znika, Władca Ognia postanawia to wykorzystać, rozpoczynając wojnę przeciwko pozostałym trzem nacjom. Gdy sto lat później jest bliski zwycięstwa, rodzeństwo z wodnego plemienia, Sokka i Katara, ratują dziwnie wyglądającego dwunastoletniego chłopca imieniem Aang. Wkrótce odkrywają, że jest on nie tylko ostatnim z magów powietrza, ale również dawno zaginionym Awatarem. Postanawiają pomagać chłopcu w jego długiej wędrówce, w której ma opanować pozostałe żywioły i ochronić świat przed zniewoleniem.</p>
+            <div class="image-container">
+            <img src="gaang.png" alt="aang">
+            </div>
+        </div>
+        <div class="content" id="aboutPage" style="display: none;">
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="wan.png" alt="Wan">
+                    <div class="gallery-caption">Wan (wym. [łan]) był pierwszym Awatarem, który żył dziesięć tysięcy lat przed epoką Awatar Korry. Gdy został wygnany ze swojego domu, nauczył się współżyć z duchami i postanowił pomóc zaprowadzić równowagę między nimi i resztą ludzkości, co doprowadziło wkrótce do tego, że stał się pierwszym Awatarem.</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="kyoshi.png" alt="Kyoshi">
+                    <div class="gallery-caption">Kyoshi (wym. [kijoszi] lub [kjoszi]) była Awatarem pochodzącym z Królestwa Ziemi, której poprzednikiem był Kuruk z Północnego Plemienia Wody, a następcą Roko z Narodu Ognia. Zmarła w wieku 230 lat, co czyni ją najdłużej żyjącym znanym człowiekiem w historii. Kyoshi była bardzo wysoką kobietą, przewyższającą większość ludzi i posiadającą także największy rozmiar stopy spośród wszystkich Awatarów. Była córką dwójki kryminalistów: Jesy, zbuntowanej Nomadki Powietrza i Harka, złodzieja pochodzącego z ubogiej rodziny aktorów z Królestwa Ziemi. Odziedziczyła później swój charakterystyczny strój po rodzicach, włączając w to wachlarze swojej matki i malowidła na twarzy swojego ojca.</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="roko.png" alt="Roko">
+                    <div class="gallery-caption">Roko (ang. Roku) to Awatar z Narodu Ognia, następca Kyoshi i poprzednik Aanga. Wspomnienia Roku stanowiły przewodnią siłę w dążeniach Aanga do zakończenia wojny stuletniej.
+                        Roko był mądrym i litościwym Awatarem o dobrych intencjach. Żyjąc w erze zmian i czasach nacjonalistycznej ekspansji, pracował niestrudzenie, by zachować równowagę pomiędzy czterema narodami. Jednakże sam przyznał, że w trakcie swojego życia był zbyt niezdecydowany. Wieloletnia przyjaźń z Sozinem doprowadziła do niechęci Roko do zabicia Władcy Ognia i tym samym uśmierzenia jego imperialistycznych zapędów. To doprowadziło w końcu do śmierci Awatara, co jednocześnie było przyczyną wybuchu wojny, która trwała przez sto lat.</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="korra.png" alt="Korra">
+                    <div class="gallery-caption">Korra to obecna inkarnacja Awatara, a także natychmiastowa następczyni Awatara Aanga. Urodzona i wychowana w Południowym Plemieniu Wody, gdzie udało jej się opanować magię wody, ziemi i ognia, Korra później przeprowadziła się do Miasta Republiki, aby opanować również magię powietrza pod czujnym okiem Tenzina, a także w celu zażegnania jej niechęci wobec duchowych aspektów sztuki tkania żywiołów. Dzięki pomocy ze strony ducha Aanga, Korrze udało się nabyć zdolność magii energii i po późniejszym połączeniu z jej poprzednimi wcieleniami, także umiejętność samodzielnego wchodzenia w stan Awatara.</div>
+                </div>
+                <!-- Dodaj więcej zdjęć z odpowiadającymi napisami -->
+            </div>
+            <div class="navigation-buttons">
+                <button class="prev-button" onclick="prevImage()">Poprzednie</button>
+                <button class="next-button" onclick="nextImage()">Następne</button>
+            </div>
+        </div>
+        <div class="content" id="galleryPage" style="display: none;">
+            <h1 style="color:black">PREMIERA FILMU</h1>
+            <h2 style="color:black">AVATAR - OSTATNI WŁADCA WIATRU</h2> <!-- Nowy napis -->
+            <div class="gallery">
+                <img src="film.png" alt="film">
+            </div>
+            <div id="countdown" class="countdown"></div>
+        </div>
+        
+        <script src="script.js"></script>
+    </div>
+    <footer>
+        Strona "Avatar"   Kalisz Gabriela
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
